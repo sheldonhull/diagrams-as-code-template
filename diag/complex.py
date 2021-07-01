@@ -27,7 +27,12 @@ def main():
         print(f"==> def colored_flow: nodes {nodes}")
         for index, n2 in zip(nodes, nodes[1:]):
             print(f"\t----> {index.label} >> Edge(label={label}) >> {n2.label}")
-            index >> Edge(label=label) >> Edge(color=color, style=style) >> n2
+            (
+                index
+                >> Edge(label=label, style=style)
+                >> Edge(color=color, style=style)
+                >> n2
+            )
         print("completed with colored_flow")
 
     ############################################
