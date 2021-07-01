@@ -1,0 +1,41 @@
+---
+# https://taskfile.dev
+version: '3'
+output: prefixed
+silent: true
+vars:
+  ARTIFACT_DIRECTORY: ./artifacts
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+  init:
+    desc: initialize poetry dependencies
+    cmds:
+      - poetry install
+  install:
+    desc: poetry command to install dependencies in local virtual environment
+    cmds:
+      - poetry run install
+  build:
+    desc: Build all diagrams and output to artifacts directory
+    summary: |
+      Add a new entry for each new diagram here
+      Add it to pyproject.toml
+      Edit your diagram file and flow mapping in the python file
+    cmds:
+      - mkdir -p "{{ .ARTIFACT_DIRECTORY }}" && echo "✅ created artifact directory"
+      - |
+        poetry run simple --title "My Title" --filename "simple-diagram" --outformat "png" && echo "✅ poetry run simple succeeded"
+
+        poetry run complex --title "A Complex Diagram" --filename "complex-diagram" --outformat "png" && echo "✅ poetry run diagram succeeded"
+      #- poetry run complex && echo "✅ poetry run complex succeeded"
+
+  # Tip: this is taskfile namespace, so you execute using `task docker:build`
+  docker:build:
+    desc: build the container
+    summary: |
+      Can use in GitHub codespaces, or open in local container with VSCode Remote Containers. 🎉
+    cmds:
+      - docker build --pull --rm -f ".devcontainer/Dockerfile" -t diagramsascodetemplate:latest ".devcontainer"

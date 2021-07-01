@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "diag"
+version = "0.1.0"
+description = "Use Python diagrams library to create beautiful diagrams via simple Python DSL"
+authors = ["Sheldon Hull <sheldonhull@users.noreply.github.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+diagrams = "^0.20.0"
+graphviz = "^0.16"
+scour = "^0.38.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+simple   = "diag.simple:main" # Pass your arguments in task file
+complex = "diag.complex:main" # Pass your arguments in task file
+# -> new script complex = "diag.diagram-complex:main"
+# -> add new scripts in here

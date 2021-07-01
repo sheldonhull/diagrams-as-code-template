@@ -1,0 +1,9 @@
+{
+    "extends": [
+        "config:base"
+    ],
+    "automerge": true,
+    "schedule": [
+        "every 1 months on the first day of the month"
+    ]
+}

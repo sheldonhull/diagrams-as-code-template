@@ -1,0 +1,47 @@
+---
+# EXAMPLE USAGE
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
+#
+
+# Install go get github.com/evilmartians/lefthook
+# This will run the key security checks that will have redacted secrets on output
+ci-checks:
+  commands:
+
+pre-push:
+  commands:
+    squealer:
+      name: squealer
+      run: squealer --config-file ./.squealer.yml
+
+pre-commit:
+  parallel: true
+  tags: lint
+  commands:
+    markdownlint:
+      tags: docker
+      name: markdownlint-autofix
+      glob: "**/*/*.md"
+      run: docker run -i --rm -v ${PWD}:/work tmknom/markdownlint:latest --fix {files}
+    shellcheck:
+      tags: gotool
+      name: shellcheck
+      files: git ls-files -m
+      glob: "*.sh"
+      run: docker run --rm -v ${PWD}:/mnt koalaman/shellcheck:stable --format=json {files}
+#     yamllint:
+#       tags: formatting lint
+#       name: yamllint
+#  #     files: git ls-files *.yml *.yaml
+#       run: docker run --rm -v ${PWD}:/yaml sdesbure/yamllint:latest yamllint --format parsable --strict --config-file .yamllint.yaml {files}
+    # ymlfmt:
+    #   tags: formatting lint
+    #   name: ymlfmt
+    #   files: git ls-files *.yml *.yaml
+    #   # run: docker run --rm -v ${PWD}:/data cytopia/yamlfmt *\.yml
+    #   run: docker run --rm -v ${PWD}:/data tianon/ymlfmt ymlfmt /data/{files}
+    pythonformat:
+      tags: python
+      name: pythonformat
+      run: docker run --rm -v ${PWD}:/src -v ${PWD}/.blackcache:/home/black/.cache --workdir=/src kiwicom/black black .
