@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-diagrams = "^0.20.0"
+diagrams = "^0.22.0"
 graphviz = "^0.16"
 scour = "^0.38.2"
 
