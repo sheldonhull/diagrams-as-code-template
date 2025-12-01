@@ -8,16 +8,16 @@ python-versions = ">=3.8"
 
 [[package]]
 name = "diagrams"
-version = "0.24.4"
+version = "0.25.1"
 description = "Diagram as Code"
 category = "main"
 optional = false
-python-versions = "<4.0,>=3.9"
+python-versions = "~=3.9"
 
 [package.dependencies]
 graphviz = ">=0.13.2,<0.21.0"
 jinja2 = ">=2.10,<4.0"
-pre-commit = ">=4.0.1,<5.0.0"
+pre-commit = ">=4.0.1,<5"
 
 [[package]]
 name = "distlib"
@@ -169,7 +169,7 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "55db0c4eb09e1e1b6e2f35373fbddb503188040a59d5a8906da6cf60014ad234"
+content-hash = "ffdcf06b622095627eb5009cafbb91d8b9c948225769fc23d4c05990637393d9"
 
 [metadata.files]
 cfgv = [
@@ -177,8 +177,8 @@ cfgv = [
     {file = "cfgv-3.4.0.tar.gz", hash = "sha256:e52591d4c5f5dead8e0f673fb16db7949d2cfb3f7da4582893288f0ded8fe560"},
 ]
 diagrams = [
-    {file = "diagrams-0.24.4-py3-none-any.whl", hash = "sha256:41c5c03e1317ada0a64287f704e5e9d9c8794addce96b66dd831a536aa7e6507"},
-    {file = "diagrams-0.24.4.tar.gz", hash = "sha256:367b3056bc8875b5a32dcf66c7aad961cb83527b8f345dced82f17ee82781f72"},
+    {file = "diagrams-0.25.1-py3-none-any.whl", hash = "sha256:90698eaa74c027dfffd8306ba7f08ee543959205024050a6357f34eae9961345"},
+    {file = "diagrams-0.25.1.tar.gz", hash = "sha256:87480ba0b2d26987a69f7d553aa0cb1cebf1406adc03fef7031bdfff026bfc51"},
 ]
 distlib = [
     {file = "distlib-0.3.9-py2.py3-none-any.whl", hash = "sha256:47f8c22fd27c27e25a65601af709b38e4f0a45ea4fc2e710f65755fa8caaaf87"},
